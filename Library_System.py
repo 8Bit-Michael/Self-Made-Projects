@@ -29,18 +29,16 @@ class User:
 # This is just a list of books that are available in the library, which you
 # can modify to your liking.
 my_books = [
-    Book("Harry Potter And The Sorceror's Stone", "J.K. Rowling", False),
+    Book("Harry Potter And The Sorcerer's Stone", "J.K. Rowling", False),
     Book("The Hobbit", "J.R.R. Tolkien", False),
     # The true doesn't mean that the book is available, it actually means that the book is borrowed.
     Book("The Lord of The Rings", "J.R.R. Tolkien", True),
 ]
 # Line 36 to 46 just gathers the user's input and checks if the input is valid or not.
-user_name = input("What is your name? ")
-try:
-    int_name = str(user_name).strip()
-except ValueError:
-    print(Fore.RED + f"{user_name} is not a valid name. Names can't be numbers.")
-
+user_name = input("Please enter your name: ").strip()
+if any(char.isdigit() for char in user_name):
+    print(Fore.RED + "Names can't contain numbers.")
+    exit()
 user_input = input("What books would you like? Enter the titles separated by commas: ")
 
 requested_titles = user_input.replace(".", "").strip().split(",")
