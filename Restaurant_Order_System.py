@@ -41,7 +41,7 @@ Choice: """))
             return self.print_items()
 
         print(Fore.GREEN + f"{self.order_list[-1]} has been added to your order.")
-        again = input("Add more items? Type yes or no: ").strip().lower()
+        again = input("Add more items? Type yes or no: ").replace(".","").strip().lower()
         if again == 'yes':
             return self.print_items()
         elif again == 'no':
